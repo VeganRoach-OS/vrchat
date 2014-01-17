@@ -30,10 +30,10 @@ public class ChatHandler extends JavaPlugin {
 						// TODO: set player's chat to OOC
 						break;
 					case "s":
-						// TODO: set player's chat to TALK
+						// TODO: set player's chat to SAY
 						break;
 					case "y":
-						// TODO: set player's chat to SHOUT
+						// TODO: set player's chat to YELL
 						break;
 					case "w":
 						// TODO: set player's chat to WHISPER
@@ -55,10 +55,10 @@ public class ChatHandler extends JavaPlugin {
 						// TODO: send a message in OOC
 						break;
 					case "s":
-						// TODO: send a message in TALK
+						// TODO: send a message in SAY
 						break;
 					case "y":
-						// TODO: send a message in SHOUT
+						// TODO: send a message in YELL
 						break;
 					case "w":
 						// TODO: send a message in WHISPER
