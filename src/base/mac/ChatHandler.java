@@ -44,6 +44,11 @@ public class ChatHandler extends JavaPlugin {
 				}
 			}
 			// else, send a single message in the specified channel
+			/*
+			 * Emotes are also in this block, and they should stay
+			 * in this block, because no one should be switching to
+			 * an emote channel long-term.
+			 */
 			else {
 				switch (command){
 					case "ooc":
