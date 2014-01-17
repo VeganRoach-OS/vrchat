@@ -1,0 +1,6 @@
+name: VRChat
+main: base.mac.ChatHandler
+version: 1.0.0
+commands:
+    ooc:
+        description: Changes chat to the global (out-of-character) chat channel
