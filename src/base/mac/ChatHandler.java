@@ -18,13 +18,53 @@ public class ChatHandler extends JavaPlugin {
 	public void onEnable(){}
 
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
+		// commands useless in console
 		if (sender instanceof Player){
 			Player player = (Player) sender;
+			// convert command input into lowercase string
 			String command = cmd.getName().toLowerCase();
-			switch (command){
-				case "ooc":
-					player.sendMessage(ChatColor.AQUA + "It works!");
-					break;
+			// if no command args, send to channel
+			if (args.length == 0){
+				switch (command){
+					case "ooc":
+						// TODO: set player's chat to OOC
+						break;
+					case "s":
+						// TODO: set player's chat to TALK
+						break;
+					case "y":
+						// TODO: set player's chat to SHOUT
+						break;
+					case "w":
+						// TODO: set player's chat to WHISPER
+						break;
+					case "l":
+						// TODO: set player's chat to LOW_VOICE
+						break;
+				}
+			}
+			// else, send a single message in the specified channel
+			else {
+				switch (command){
+					case "ooc":
+						// TODO: send a message in OOC
+						break;
+					case "s":
+						// TODO: send a message in TALK
+						break;
+					case "y":
+						// TODO: send a message in SHOUT
+						break;
+					case "w":
+						// TODO: send a message in WHISPER
+						break;
+					case "l":
+						// TODO: send a message in LOW_VOICE
+						break;
+					case "e":
+						// TODO: send a local emote
+						break;
+				}
 			}
 		}
 		return false;
