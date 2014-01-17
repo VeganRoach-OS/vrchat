@@ -4,6 +4,8 @@
 *.jar
 *.war
 *.ear
+
+# Stuff Specific to IntelliJ Idea #
 *.iml
 *.idea/*
 out/
