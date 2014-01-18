@@ -64,10 +64,7 @@ public class ChatHandler extends JavaPlugin
 					case "w":
 						c = Channel.WHISPER;
 						break;
-					case "l":
-                        c = Channel.LOW_VOICE;
-						break;
-                    default:
+					default:
                         player.sendMessage(command + "is an invalid chat command. Try again.");
                         return false;
 				}
@@ -96,9 +93,6 @@ public class ChatHandler extends JavaPlugin
 						break;
 					case "w":
 						Channel.WHISPER.sendMessage(player, message);
-						break;
-					case "l":
-						Channel.LOW_VOICE.sendMessage(player, message);
 						break;
 					case "e":
 						Channel.EMOTE.sendMessage(player, message);

@@ -12,10 +12,9 @@ import java.util.logging.Logger;
 public enum Channel
 {
     OOC(ChatColor.DARK_GRAY),
-    SAY(ChatColor.GREEN, 32),
-    YELL(ChatColor.RED, 64),
-    LOW_VOICE(ChatColor.DARK_PURPLE, 8),
-    EMOTE(ChatColor.YELLOW, 32),
+    SAY(ChatColor.GREEN, 8),
+    YELL(ChatColor.RED, 256),
+    EMOTE(ChatColor.YELLOW, 16),
     WHISPER(ChatColor.BLUE, 2);
 
     private final double RANGE;
