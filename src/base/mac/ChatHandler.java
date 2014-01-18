@@ -46,28 +46,28 @@ public class ChatHandler extends JavaPlugin {
 			}
 			// else, send a single message in the specified channel
 			else {
-				String message = null;
+				String message = "";
 				for (String s : args){
 					message += (s + " ");
 				}
 				switch (command){
 					case "ooc":
-						Channel.OOC.sendMessage(player,message);
+						Channel.OOC.sendMessage(player, message);
 						break;
 					case "s":
-						Channel.SAY.sendMessage(player,message);
+						Channel.SAY.sendMessage(player, message);
 						break;
 					case "y":
-						Channel.YELL.sendMessage(player,message);
+						Channel.YELL.sendMessage(player, message);
 						break;
 					case "w":
-						Channel.WHISPER.sendMessage(player,message);
+						Channel.WHISPER.sendMessage(player, message);
 						break;
 					case "l":
-						Channel.LOW_VOICE.sendMessage(player,message);
+						Channel.LOW_VOICE.sendMessage(player, message);
 						break;
 					case "e":
-						Channel.EMOTE.sendMessage(player,message);
+						Channel.EMOTE.sendMessage(player, message);
 						break;
 				}
 			}
