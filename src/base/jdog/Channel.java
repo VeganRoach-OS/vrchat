@@ -35,27 +35,48 @@ public enum Channel
 		int recipients = 0;
 
 		// TODO: if not emote
-		// TODO: if range not global
-		for (Player y : Bukkit.getOnlinePlayers())
-        {
-			if (y.isOnline() && y != null)
-            {
-				if (x.getLocation().distance(y.getLocation()) <= RANGE)
-                {
-					y.sendMessage(getColor() + getTag() + ChatColor.GRAY + x.getName() + ": " + ChatColor.WHITE + message);
-					recipients++;
+		if (true)
+		{
+			// TODO: if range not global
+			if (true)
+			{
+				for (Player y : Bukkit.getOnlinePlayers())
+				{
+					if (y.isOnline() && y != null)
+					{
+						if (x.getLocation().distance(y.getLocation()) <= RANGE)
+						{
+							y.sendMessage(getColor() + getTag() + ChatColor.GRAY + x.getName() + ": " + ChatColor.WHITE + message);
+							recipients++;
+						}
+					}
+				}
+			}
+			// TODO: else (if global)
+			else
+			{
+				for (Player y : Bukkit.getOnlinePlayers())
+				{
+					if (y.isOnline() && y != null)
+					{
+						y.sendMessage(getColor() + getTag() + ChatColor.GRAY + x.getName() + ": " + ChatColor.WHITE + message);
+						recipients++;
+					}
 				}
 			}
 		}
 		// TODO: else (if emote)
-		for (Player y : Bukkit.getOnlinePlayers())
-        {
-			if (y.isOnline() && y != null)
-            {
-				if (x.getLocation().distance(y.getLocation()) <= RANGE)
-                {
-					y.sendMessage(ChatColor.YELLOW + x.getName() + message);
-					recipients++;
+		else
+		{
+			for (Player y : Bukkit.getOnlinePlayers())
+			{
+				if (y.isOnline() && y != null)
+				{
+					if (x.getLocation().distance(y.getLocation()) <= RANGE)
+					{
+						y.sendMessage(ChatColor.YELLOW + x.getName() + message);
+						recipients++;
+					}
 				}
 			}
 		}
