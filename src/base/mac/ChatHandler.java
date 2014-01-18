@@ -1,7 +1,6 @@
 package base.mac;
 
 import base.jdog.Channel;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -46,11 +45,6 @@ public class ChatHandler extends JavaPlugin {
 				}
 			}
 			// else, send a single message in the specified channel
-			/*
-			 * Emotes are also in this block, and they should stay
-			 * in this block, because no one should be switching to
-			 * an emote channel long-term.
-			 */
 			else {
 				String message = null;
 				for (String s : args){
