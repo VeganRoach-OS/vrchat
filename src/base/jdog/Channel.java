@@ -33,11 +33,11 @@ public enum Channel
     {
 		int recipients = 0;
 
-		// TODO: if not emote
-		if (true)
+		//if not emote
+		if (this != EMOTE)
 		{
-			// TODO: if range not global
-			if (true)
+			//if range not global
+			if (this != OOC)
 			{
 				for (Player y : Bukkit.getOnlinePlayers())
 				{
@@ -51,7 +51,7 @@ public enum Channel
 					}
 				}
 			}
-			// TODO: else (if global)
+			//else (if global)
 			else
 			{
 				for (Player y : Bukkit.getOnlinePlayers())
@@ -64,7 +64,7 @@ public enum Channel
 				}
 			}
 		}
-		// TODO: else (if emote)
+		//else (if emote)
 		else
 		{
 			for (Player y : Bukkit.getOnlinePlayers())
@@ -80,13 +80,13 @@ public enum Channel
 			}
 		}
 		// let sender know if no one got their message
-		if (recipients == 0)
+		if (recipients == 1)
         {
-			x.sendMessage(ChatColor.DARK_GRAY + "No one heard you.");
+			x.sendMessage(ChatColor.DARK_GRAY + "No one " + (this == EMOTE ? "saw" : "heard") + " you.");
         }
 	}
 
-	private ChatColor getColor()
+	public ChatColor getColor()
     {
 		return COLOR;
 	}
