@@ -5,10 +5,10 @@ commands:
     ooc:
         description: Changes chat to the global (out-of-character) chat channel
     s:
-        description: (say) Changes chat to the local (32 blocks) chat channel
+        description: (say) Changes chat to the local (8 blocks) chat channel
     y:
-        description: (yell) Changes chat to the local (64 blocks) chat channel
+        description: (yell) Changes chat to the local (256 blocks) chat channel
     w:
         description: (whisper) Changes chat to the local (2 blocks) chat channel
     e:
-        description: (emote) Sends a local emote
+        description: (emote) Sendes a local emote
