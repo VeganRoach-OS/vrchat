@@ -65,7 +65,7 @@ public class ChatHandler extends JavaPlugin
 						c = Channel.WHISPER;
 						break;
 					default:
-                        player.sendMessage(command + "is an invalid chat command. Try again.");
+                        player.sendMessage(command + " is an invalid chat command. Please try again or type /help VRChat for help.");
                         return false;
 				}
 
