@@ -1,4 +1,6 @@
-package base.mac;
+package base.jdog;
+
+import org.bukkit.entity.Player;
 
 /**
  * Created by Jordan on 1/17/14.
@@ -17,4 +19,8 @@ public enum Channel
     {
         RANGE = range;
     }
+
+	public void sendMessage(Player p, String message){
+		// TODO: send message
+	}
 }
