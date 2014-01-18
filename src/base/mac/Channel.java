@@ -5,7 +5,7 @@ package base.mac;
  */
 public enum Channel
 {
-    OOC, SAY(32), YELL(64), LOW_VOICE(8), EMOTE(32);
+    OOC, SAY(32), YELL(64), LOW_VOICE(8), EMOTE(32), WHISPER(2);
 
     private final double RANGE;
 
