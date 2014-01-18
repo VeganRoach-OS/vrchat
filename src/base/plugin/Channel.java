@@ -5,7 +5,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 /**
- * Created by Jordan on 1/17/14.
+ * @author Jdog653
  */
 public enum Channel
 {
