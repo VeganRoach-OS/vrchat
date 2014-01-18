@@ -1,10 +1,8 @@
-package base.jdog;
+package base.plugin;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
-
-import java.util.logging.Logger;
 
 /**
  * Created by Jordan on 1/17/14.
