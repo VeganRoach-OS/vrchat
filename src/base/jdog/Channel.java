@@ -73,7 +73,7 @@ public enum Channel
 				{
 					if (x.getLocation().distance(y.getLocation()) <= RANGE)
 					{
-						y.sendMessage(ChatColor.YELLOW + x.getName() + message);
+						y.sendMessage(ChatColor.YELLOW + x.getName() + " " + message);
 						recipients++;
 					}
 				}
