@@ -44,6 +44,22 @@ public class ChatHandler extends JavaPlugin
 			Player player = (Player) sender;
 			// convert command input into lowercase string
 			String command = cmd.getName().toLowerCase();
+            // command aliasing
+            switch (command)
+            {
+                case "say":
+                    command = "s";
+                    break;
+                case "yell":
+                    command = "y";
+                    break;
+                case "whisper":
+                    command = "w";
+                    break;
+                case "emote":
+                    command = "e";
+                    break;
+            }
 			// if no command args, send to channel
 			if (args.length == 0)
             {
