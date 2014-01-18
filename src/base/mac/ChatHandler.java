@@ -1,5 +1,6 @@
 package base.mac;
 
+import base.jdog.Channel;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -51,24 +52,28 @@ public class ChatHandler extends JavaPlugin {
 			 * an emote channel long-term.
 			 */
 			else {
+				String message = null;
+				for (String s : args){
+					message += (s + " ");
+				}
 				switch (command){
 					case "ooc":
-						// TODO: send a message in OOC
+						Channel.OOC.sendMessage(player,message);
 						break;
 					case "s":
-						// TODO: send a message in SAY
+						Channel.SAY.sendMessage(player,message);
 						break;
 					case "y":
-						// TODO: send a message in YELL
+						Channel.YELL.sendMessage(player,message);
 						break;
 					case "w":
-						// TODO: send a message in WHISPER
+						Channel.WHISPER.sendMessage(player,message);
 						break;
 					case "l":
-						// TODO: send a message in LOW_VOICE
+						Channel.LOW_VOICE.sendMessage(player,message);
 						break;
 					case "e":
-						// TODO: send a local emote
+						Channel.EMOTE.sendMessage(player,message);
 						break;
 				}
 			}
