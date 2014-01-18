@@ -13,6 +13,7 @@ import java.util.logging.Logger;
  */
 public class ChatHandler extends JavaPlugin {
 	public final Logger log = Logger.getLogger("Minecraft");
+    private Channel currentChannel = Channel.OOC;
 	public static ChatHandler thisPlugin;
 
 	public void onEnable(){}
@@ -27,19 +28,19 @@ public class ChatHandler extends JavaPlugin {
 			if (args.length == 0){
 				switch (command){
 					case "ooc":
-						// TODO: set player's chat to OOC
+						currentChannel = Channel.OOC;
 						break;
 					case "s":
-						// TODO: set player's chat to SAY
+						currentChannel = Channel.SAY;
 						break;
 					case "y":
-						// TODO: set player's chat to YELL
+						currentChannel = Channel.YELL;
 						break;
 					case "w":
-						// TODO: set player's chat to WHISPER
+						currentChannel = Channel.WHISPER;
 						break;
 					case "l":
-						// TODO: set player's chat to LOW_VOICE
+                        currentChannel = Channel.LOW_VOICE;
 						break;
 				}
 			}
