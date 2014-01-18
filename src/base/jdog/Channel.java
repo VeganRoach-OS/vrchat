@@ -4,6 +4,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
+import java.util.logging.Logger;
+
 /**
  * Created by Jordan on 1/17/14.
  */
@@ -84,14 +86,14 @@ public enum Channel
         {
 			x.sendMessage(ChatColor.DARK_GRAY + "No one " + (this == EMOTE ? "saw" : "heard") + " you.");
         }
-	}
+    }
 
 	public ChatColor getColor()
     {
 		return COLOR;
 	}
 
-	private String getTag()
+	public String getTag()
     {
 		return "(" + super.toString().replace('_', ' ') + ")";
 	}
