@@ -9,37 +9,51 @@ import org.bukkit.entity.Player;
  */
 public enum Channel
 {
-    OOC, SAY(32), YELL(64), LOW_VOICE(8), EMOTE(32), WHISPER(2);
+    OOC(ChatColor.DARK_GRAY),
+    SAY(ChatColor.GREEN, 32),
+    YELL(ChatColor.RED, 64),
+    LOW_VOICE(ChatColor.DARK_PURPLE, 8),
+    EMOTE(ChatColor.YELLOW ,32),
+    WHISPER(ChatColor.BLUE, 2);
 
     private final double RANGE;
-
-    Channel()
+    private final ChatColor COLOR;
+    Channel(ChatColor c)
     {
-        this(-1);
+        this(c, -1);
 		// TODO: initialize color and name
     }
-    Channel(double range)
+    Channel(ChatColor c, double range)
     {
+        COLOR = c;
         RANGE = range;
 		// TODO: initialize color and name
     }
 
-	public void sendMessage(Player x, String message){
+	public void sendMessage(Player x, String message)
+    {
 		int recipients = 0;
+
 		// TODO: if not emote
 		// TODO: if range not global
-		for (Player y : Bukkit.getOnlinePlayers()){
-			if (y.isOnline() && y != null){
-				if (x.getLocation().distance(y.getLocation()) <= RANGE){
+		for (Player y : Bukkit.getOnlinePlayers())
+        {
+			if (y.isOnline() && y != null)
+            {
+				if (x.getLocation().distance(y.getLocation()) <= RANGE)
+                {
 					y.sendMessage(getColor() + getTag() + ChatColor.GRAY + x.getName() + ": " + ChatColor.WHITE + message);
 					recipients++;
 				}
 			}
 		}
 		// TODO: else (if emote)
-		for (Player y : Bukkit.getOnlinePlayers()){
-			if (y.isOnline() && y != null){
-				if (x.getLocation().distance(y.getLocation()) <= RANGE){
+		for (Player y : Bukkit.getOnlinePlayers())
+        {
+			if (y.isOnline() && y != null)
+            {
+				if (x.getLocation().distance(y.getLocation()) <= RANGE)
+                {
 					y.sendMessage(ChatColor.YELLOW + x.getName() + message);
 					recipients++;
 				}
@@ -47,16 +61,18 @@ public enum Channel
 		}
 		// let sender know if no one got their message
 		if (recipients < 1)
+        {
 			x.sendMessage(ChatColor.DARK_GRAY + "No one heard you.");
+        }
 	}
 
-	private ChatColor getColor(){
-		// TODO: return channel's color
-		return null;
+	private ChatColor getColor()
+    {
+		return COLOR;
 	}
 
-	private String getTag(){
-		// TODO: return name surrounded by parens
-		return null;
+	private String getTag()
+    {
+		return "(" + super.toString().replace('_', ' ') + ")";
 	}
 }
