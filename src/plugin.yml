@@ -1,6 +1,6 @@
 name: VRChat
 main: base.mac.ChatHandler
-version: 1.1.0
+version: 1.2.0
 commands:
     ooc:
         description: Changes chat to the global (out-of-character) chat channel
@@ -11,4 +11,4 @@ commands:
     w:
         description: (whisper) Changes chat to the local (2 blocks) chat channel
     e:
-        description: (emote) Sendes a local emote
+        description: (emote) Sends a local emote
