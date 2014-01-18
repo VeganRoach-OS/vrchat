@@ -1,33 +1,46 @@
 package base.mac;
 
 import base.jdog.Channel;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Logger;
 
 /**
  * @author 2mac
  */
-public class ChatHandler extends JavaPlugin {
-	public final Logger log = Logger.getLogger("Minecraft");
-    private Channel currentChannel = Channel.OOC;
-	public static ChatHandler thisPlugin;
+public class ChatHandler extends JavaPlugin
+{
+	private Map<String, Channel> players;
 
-	public void onEnable()
+    public void onEnable()
     {
+        players = new HashMap<>();
+
+        for(Player p : Bukkit.getOnlinePlayers())
+        {
+            players.put(p.getDisplayName(), Channel.OOC);
+        }
+
         PluginManager pm = this.getServer().getPluginManager();
         pm.registerEvents(new PlayerChatListener(this), this);
+        pm.registerEvents(new PlayerLoginListener(this), this);
     }
 
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
     {
+        Channel c;
 		// commands useless in console
 		if (sender instanceof Player)
         {
@@ -40,23 +53,27 @@ public class ChatHandler extends JavaPlugin {
 				switch (command)
                 {
 					case "ooc":
-						currentChannel = Channel.OOC;
+						c = Channel.OOC;
 						break;
 					case "s":
-						currentChannel = Channel.SAY;
+						c = Channel.SAY;
 						break;
 					case "y":
-						currentChannel = Channel.YELL;
+						c = Channel.YELL;
 						break;
 					case "w":
-						currentChannel = Channel.WHISPER;
+						c = Channel.WHISPER;
 						break;
 					case "l":
-                        currentChannel = Channel.LOW_VOICE;
+                        c = Channel.LOW_VOICE;
 						break;
+                    default:
+                        player.sendMessage(command + "is an invalid chat command. Try again.");
+                        return false;
 				}
 
-                player.sendMessage(currentChannel.getColor() + "You've switched to channel: " + currentChannel.name().replace('_', ' '));
+                players.put(player.getDisplayName(), c);
+                player.sendMessage(c.getColor() + "You've switched to channel: " + c.name().replace('_', ' '));
 			}
 			// else, send a single message in the specified channel
 			else
@@ -91,6 +108,22 @@ public class ChatHandler extends JavaPlugin {
 		}
 		return false;
 	}
+    private class PlayerLoginListener implements Listener
+    {
+        private ChatHandler plugin;
+
+        PlayerLoginListener(ChatHandler h)
+        {
+            plugin = h;
+        }
+
+        @EventHandler
+        public void onPlayerLogin(PlayerLoginEvent event)
+        {
+            players.put(event.getPlayer().getDisplayName(), Channel.OOC);
+        }
+    }
+
     private class PlayerChatListener implements Listener
     {
         private ChatHandler plugin;
@@ -102,7 +135,8 @@ public class ChatHandler extends JavaPlugin {
         @EventHandler
         public void onPlayerChat(AsyncPlayerChatEvent event)
         {
-            currentChannel.sendMessage(event.getPlayer(), event.getMessage());
+            players.get(event.getPlayer().getDisplayName()).sendMessage(event.getPlayer(), event.getMessage());
+            getLogger().info(players.get(event.getPlayer().getDisplayName()).getTag() + event.getPlayer().getDisplayName() + ": " + event.getMessage());
             event.setCancelled(true);
         }
     }
