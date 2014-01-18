@@ -4,11 +4,19 @@ version: 1.2.0
 commands:
     ooc:
         description: Changes chat to the global (out-of-character) chat channel
+    say:
+        description: Changes chat to the local (8 blocks) chat channel
+    yell:
+        description: Changes chat to the local (256 blocks) chat channel
+    whisper:
+        description: Changes chat to the local (2 blocks) chat channel
+    emote:
+        description: Sends a local emote
     s:
-        description: (say) Changes chat to the local (8 blocks) chat channel
+        description: Alias for say
     y:
-        description: (yell) Changes chat to the local (256 blocks) chat channel
+        description: Alias for yell
     w:
-        description: (whisper) Changes chat to the local (2 blocks) chat channel
+        description: Alias for whisper
     e:
-        description: (emote) Sends a local emote
+        description: Alias for emote
