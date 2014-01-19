@@ -65,6 +65,10 @@ public class ChatHandler extends JavaPlugin
                 case "w":
                     c = Channel.WHISPER;
                     break;
+                case "emote":
+                case "e":
+                    c = Channel.EMOTE;
+                    break;
                 default:
                     player.sendMessage(ChatColor.RED + command + " is an invalid VRChat command. Please try again or type /help VRChat for help.");
                     return false;
@@ -73,18 +77,18 @@ public class ChatHandler extends JavaPlugin
             //Check for channel redundancy. No need to switch to a channel the player is already in.
             if(c != players.get(name))
             {
-                //No arguments. Send player to specified channel
+                //No arguments. Send player to specified channel (except the Emote Channel!).
                 if (args.length == 0)
                 {
-
-                    if(c != players.get(name))
+                    if(c != Channel.EMOTE)
                     {
                         players.put(name, c);
                         player.sendMessage(c.getColor() + "You've switched to channel: " + c.name());
                     }
                     else
                     {
-                        player.sendMessage(c.getColor() + "You're already in channel: " + c.name());
+                        player.sendMessage(ChatColor.RED + "You can't switch to the emote Channel. Sorry :(");
+                        return false;
                     }
                 }
                 //Send a single message in the specified channel without switching
@@ -98,6 +102,8 @@ public class ChatHandler extends JavaPlugin
 
                     c.sendMessage(player, message);
                 }
+
+                return true;
             }
             else
             {
