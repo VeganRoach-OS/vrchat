@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.defaults.SayCommand;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -38,6 +39,9 @@ public class ChatHandler extends JavaPlugin
 
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
     {
+        // convert command input into lowercase string
+        String command = cmd.getName().toLowerCase();
+
         //A player has to send this command
 		if (sender instanceof Player)
         {
@@ -45,10 +49,7 @@ public class ChatHandler extends JavaPlugin
             String name = player.getDisplayName();
             Channel c;
 
-			// convert command input into lowercase string
-			String command = cmd.getName().toLowerCase();
-
-            switch (command)
+			switch (command)
             {
                 case "ooc":
                     c = Channel.OOC;
@@ -111,6 +112,11 @@ public class ChatHandler extends JavaPlugin
             }
             return true;
 		}
+        else if(command.equalsIgnoreCase("say"))
+        {
+            new SayCommand().execute(sender, "", args);
+            return true;
+        }
 
         sender.sendMessage("This command cannot be executed via console. Please log into an account and try again.");
 		return false;
