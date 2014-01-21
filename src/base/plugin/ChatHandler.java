@@ -47,10 +47,22 @@ public class ChatHandler extends JavaPlugin
         {
 			Player player = (Player) sender;
             String name = player.getDisplayName();
-            Channel c;
+            Channel c = players.get(player.getName());
 
 			switch (command)
             {
+                case "vrchat":
+                    if (args.length == 1)
+                    {
+                        if (args[0].equalsIgnoreCase("version"))
+                        {
+                            player.sendMessage(ChatColor.DARK_GRAY + "[VRChat] " + ChatColor.WHITE + "Version " + getDescription().getVersion());
+                        }
+                    }else
+                    {
+                        player.sendMessage(ChatColor.RED + "Not a valid VRChat command! Type '/help vrchat' for commands.");
+                    }
+                    break;
                 case "ooc":
                     c = Channel.OOC;
                     break;
@@ -112,9 +124,26 @@ public class ChatHandler extends JavaPlugin
             }
             return true;
 		}
-        else if(command.equalsIgnoreCase("say"))
+        else if(command.equalsIgnoreCase("say") || command.equalsIgnoreCase("vrchat"))
         {
-            new SayCommand().execute(sender, "", args);
+            switch (command)
+            {
+                case "say":
+                    new SayCommand().execute(sender, "", args);
+                    break;
+                case "vrchat":
+                    if (args.length == 1)
+                    {
+                        if (args[0].equalsIgnoreCase("version"))
+                        {
+                            getLogger().info("Version " + getDescription().getVersion());
+                        }
+                    }else
+                    {
+                        getLogger().info("Not a valid VRChat command! Type 'help vrchat' for commands.");
+                    }
+                    break;
+            }
             return true;
         }
 
