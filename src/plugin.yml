@@ -1,7 +1,9 @@
 name: VRChat
 main: base.plugin.ChatHandler
-version: 1.2.3
+version: 1.2.4
 commands:
+    vrchat:
+        description: Generic VRChat command.
     ooc:
         description: Changes chat to the global (out-of-character) chat channel
     say:
