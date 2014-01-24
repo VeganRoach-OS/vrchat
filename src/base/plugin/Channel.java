@@ -40,7 +40,7 @@ public enum Channel
 			{
 				for (Player y : Bukkit.getOnlinePlayers())
 				{
-					if (y.isOnline() && y != null)
+					if (y != null && y.isOnline())
 					{
 						if (x.getLocation().distance(y.getLocation()) <= RANGE)
 						{
@@ -55,7 +55,7 @@ public enum Channel
 			{
 				for (Player y : Bukkit.getOnlinePlayers())
 				{
-					if (y.isOnline() && y != null)
+					if (y != null && y.isOnline())
 					{
 						y.sendMessage(getColor() + getTag() + ChatColor.GRAY + x.getName() + ": " + ChatColor.WHITE + message);
 						recipients++;
@@ -68,7 +68,7 @@ public enum Channel
 		{
 			for (Player y : Bukkit.getOnlinePlayers())
 			{
-				if (y.isOnline() && y != null)
+				if (y != null && y.isOnline())
 				{
 					if (x.getLocation().distance(y.getLocation()) <= RANGE)
 					{
