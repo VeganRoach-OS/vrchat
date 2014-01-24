@@ -1,6 +1,6 @@
 name: VRChat
 main: base.plugin.ChatHandler
-version: 1.2.4
+version: 1.2.5
 commands:
     vrchat:
         description: Generic VRChat command.

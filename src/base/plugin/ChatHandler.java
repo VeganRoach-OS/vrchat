@@ -47,7 +47,7 @@ public class ChatHandler extends JavaPlugin
         {
 			Player player = (Player) sender;
             String name = player.getDisplayName();
-            Channel c = players.get(player.getName());
+            Channel c;
 
 			switch (command)
             {
@@ -58,11 +58,13 @@ public class ChatHandler extends JavaPlugin
                         {
                             player.sendMessage(ChatColor.DARK_GRAY + "[VRChat] " + ChatColor.WHITE + "Version " + getDescription().getVersion());
                         }
-                    }else
+                    }
+                    else
                     {
                         player.sendMessage(ChatColor.RED + "Not a valid VRChat command! Type '/help vrchat' for commands.");
                     }
-                    break;
+
+                    return false;
                 case "ooc":
                     c = Channel.OOC;
                     break;
