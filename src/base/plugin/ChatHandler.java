@@ -90,12 +90,11 @@ public class ChatHandler extends JavaPlugin
             }
 
             //Check for channel redundancy. No need to switch to a channel the player is already in.
-            if(c != players.get(name))
+            if (args.length == 0)
             {
-                //No arguments. Send player to specified channel (except the Emote Channel!).
-                if (args.length == 0)
+                if (c != players.get(name))
                 {
-                    if(c != Channel.EMOTE)
+                    if (c != Channel.EMOTE)
                     {
                         players.put(name, c);
                         player.sendMessage(c.getColor() + "You've switched to channel: " + c.name());
@@ -106,23 +105,21 @@ public class ChatHandler extends JavaPlugin
                         return false;
                     }
                 }
-                //Send a single message in the specified channel without switching
                 else
                 {
-                    String message = "";
-                    for (String s : args)
-                    {
-                        message += (s + " ");
-                    }
-
-                    c.sendMessage(player, message);
+                    player.sendMessage(ChatColor.RED + "You did not " + "switch into" + " channel: " + c.name() + " because you're already in it.");
+                    return false;
                 }
-
-                return true;
             }
             else
             {
-                player.sendMessage(ChatColor.RED + "You did not " + (args.length == 0 ? "switch into" : "speak in") + " channel: " + c.name() + " because you're already in it.");
+                String message = "";
+                for (String s : args)
+                {
+                    message += (s + " ");
+                }
+
+                c.sendMessage(player, message);
             }
             return true;
 		}
